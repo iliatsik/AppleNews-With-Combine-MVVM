@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class NTFViewModel {
+class NFTViewModel {
     private var nfts = [NFT]() 
     private var subscriber: AnyCancellable?
 

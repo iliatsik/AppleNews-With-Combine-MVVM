@@ -17,6 +17,7 @@
 		DC627DD327C370CD001E4AC2 /* NFTViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC627DD227C370CD001E4AC2 /* NFTViewModel.swift */; };
 		DC627DD627C3713B001E4AC2 /* NFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC627DD527C3713B001E4AC2 /* NFT.swift */; };
 		DC627DD927C3983B001E4AC2 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = DC627DD827C3983B001E4AC2 /* Kingfisher */; };
+		DC627DDB27C3B388001E4AC2 /* NFTDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DC627DDA27C3B388001E4AC2 /* NFTDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 		DC627DCF27C370B5001E4AC2 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		DC627DD227C370CD001E4AC2 /* NFTViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTViewModel.swift; sourceTree = "<group>"; };
 		DC627DD527C3713B001E4AC2 /* NFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFT.swift; sourceTree = "<group>"; };
+		DC627DDA27C3B388001E4AC2 /* NFTDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				DC627DD227C370CD001E4AC2 /* NFTViewModel.swift */,
+				DC627DDA27C3B388001E4AC2 /* NFTDataSource.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -211,6 +214,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DC627DD027C370B5001E4AC2 /* NetworkService.swift in Sources */,
+				DC627DDB27C3B388001E4AC2 /* NFTDataSource.swift in Sources */,
 				DC627DCC27C36F6F001E4AC2 /* NFTTableViewCell.swift in Sources */,
 				DC627DB927C351DE001E4AC2 /* NFTViewController.swift in Sources */,
 				DC627DB527C351DE001E4AC2 /* AppDelegate.swift in Sources */,
