@@ -6,19 +6,10 @@
 //
 
 import UIKit
-import Combine
 
 class NFTViewController: UIViewController {
-
-    private var subscriber: AnyCancellable?
     
-    private var nfts = [NFT]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    private let viewModel = NTFViewModel()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -29,19 +20,10 @@ class NFTViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchNFTs()
+        viewModel.fetchNFTs()
+
         configureTableView()
     }
-    
-    private func fetchNFTs() {
-        subscriber = NetworkService().nftPublisher
-            .sink(receiveCompletion: { _ in
-            },
-                  receiveValue: { nft in
-                self.nfts = nft
-            })
-    }
-    
 }
 
 extension NFTViewController { //Private functions
@@ -62,15 +44,16 @@ extension NFTViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NFTTableViewCell.self), for: indexPath)
-//        cell.textLabel?.text = nfts[indexPath.row].assets[indexPath.row].name
-        cell.textLabel?.text = "\(indexPath.row)"
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: NFTTableViewCell.self), for: indexPath) as? NFTTableViewCell else { return UITableViewCell() }
+        cell.configure(imageURL: "",
+                       nameTitle: "Swift is new programming language for iOS, macOS, watchOS, and tvOS app development. Nonetheless, many parts of Swift will be familiar from your experience of developing in C and Objective-C.",
+                       descriptionTitle: "Swift is a new programming language for iOS, macOS, watchOS, and tvOS app development. Nonetheless, many parts of Swift will be familiar from your experience of developing in C and Objective-C. Swift provides its own versions of all fundamental C and Objective-C types, including Int for integers, Double and Float for floating-point values, Bool for Boolean values, and String for textual data. Swift also provides powerful versions of the three primary collection types, Array, Set, and Dictionary, as described in Collection Types")
         cell.backgroundColor = .white
         return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        return 220
     }
     
 }
