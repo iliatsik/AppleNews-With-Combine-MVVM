@@ -9,18 +9,12 @@ import Foundation
 import Combine
 
 class NewsViewModel {
-    var news = [Article]() {
-        didSet {
-           didFinishLoading?()
-        }
-    }
+    @Published var news = [Article]()
 
-    private var subscriber: AnyCancellable?
-
-    var didFinishLoading: (() -> Void)?
+    var subscriber: AnyCancellable?
     
     func fetchNews() {
-        subscriber = NetworkService().newsPublisher
+            subscriber = NetworkService().newsPublisher
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:

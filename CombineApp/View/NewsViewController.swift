@@ -28,11 +28,13 @@ class NewsViewController: UIViewController {
     }
     
     private func addBindings() {
-
-        viewModel.didFinishLoading = { [weak self] in
-            guard let dataSource = self?.dataSource else { return }
-            dataSource.refresh()
-        }
+        viewModel.subscriber = viewModel.$news
+            .sink(receiveValue: { [weak self] _ in
+                DispatchQueue.main.async {
+                    guard let dataSource = self?.dataSource else { return }
+                    dataSource.refresh()
+                }
+            })
     }
 }
 

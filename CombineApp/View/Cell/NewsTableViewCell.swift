@@ -12,21 +12,22 @@ class NewsTableViewCell: UITableViewCell {
     
     let image: UIImageView = {
         let image = UIImageView()
-        image.layer.cornerRadius = 8
-        image.layer.borderColor = UIColor.lightGray.cgColor
-        image.layer.borderWidth = 3.0
+        image.translatesAutoresizingMaskIntoConstraints = false
+        image.contentMode = .scaleAspectFit
         return image
     }()
     
     let name: UILabel = {
         let label = UILabel()
         label.textColor = .black
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.boldSystemFont(ofSize: 18.0)
         return label
     }()
     
     let descript: UILabel = {
         let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .black
         label.numberOfLines = 0
         label.font = UIFont.boldSystemFont(ofSize: 14.0)
@@ -52,7 +53,6 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     private func configureImage() {
-        image.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(image)
         
         NSLayoutConstraint.activate([
@@ -64,8 +64,6 @@ class NewsTableViewCell: UITableViewCell {
     }
     
     private func configureLabels() {
-        name.translatesAutoresizingMaskIntoConstraints = false
-        descript.translatesAutoresizingMaskIntoConstraints = false
         contentView.addSubview(descript)
         contentView.addSubview(name)
         
