@@ -1,13 +1,14 @@
 //
-//  NFTTableViewCell.swift
+//  NewsTableViewCell.swift
 //  CombineApp
 //
 //  Created by Ilia Tsikelashvili on 21.02.22.
 //
 
 import UIKit
+import Kingfisher
 
-class NFTTableViewCell: UITableViewCell {
+class NewsTableViewCell: UITableViewCell {
     
     let image: UIImageView = {
         let image = UIImageView()
@@ -80,7 +81,7 @@ class NFTTableViewCell: UITableViewCell {
     }
     
     func configure(imageURL: String, nameTitle: String, descriptionTitle: String) {
-        image.image = UIImage(named: "dog")
+        image.kf.setImage(with: URL(string: imageURL))
         name.text = nameTitle
         descript.text = descriptionTitle
     }
