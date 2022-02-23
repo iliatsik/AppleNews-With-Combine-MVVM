@@ -11,10 +11,10 @@ import Combine
 class NewsViewModel {
     @Published var news = [Article]()
 
-    var subscriber: AnyCancellable?
+    var subscriber = Set<AnyCancellable>()
     
     func fetchNews() {
-            subscriber = NetworkService().newsPublisher
+            NetworkService().newsPublisher
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -25,7 +25,7 @@ class NewsViewModel {
             },
                   receiveValue: { news in
                 self.news = news.articles
-            })
+            }).store(in: &subscriber)
     }
     
 }

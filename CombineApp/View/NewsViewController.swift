@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import Combine
 
 class NewsViewController: UIViewController {
     
     private let viewModel = NewsViewModel()
     private var dataSource: NewsDataSource?
+    private var subscriber = Set<AnyCancellable>()
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -28,13 +30,13 @@ class NewsViewController: UIViewController {
     }
     
     private func addBindings() {
-        viewModel.subscriber = viewModel.$news
+           viewModel.$news
             .sink(receiveValue: { [weak self] _ in
                 DispatchQueue.main.async {
                     guard let dataSource = self?.dataSource else { return }
                     dataSource.refresh()
                 }
-            })
+            }).store(in: &subscriber)
     }
 }
 
